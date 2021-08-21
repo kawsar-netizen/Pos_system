@@ -15,6 +15,10 @@ class CreateSaleInviocesTable extends Migration
     {
         Schema::create('sale_invioces', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('admin_id')->nullable();
+            $table->string('challan_no')->nullable();
+            $table->date('date');
             $table->timestamps();
         });
     }

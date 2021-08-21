@@ -15,6 +15,10 @@ class CreatePurcheseInvoicesTable extends Migration
     {
         Schema::create('purchese_invoices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('admin_id')->nullable();
+            $table->string('challan_no')->nullable();
+            $table->date('date');
             $table->timestamps();
         });
     }

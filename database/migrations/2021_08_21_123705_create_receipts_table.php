@@ -15,6 +15,11 @@ class CreateReceiptsTable extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('admin_id')->nullable();
+            $table->double('amount');
+            $table->date('date');
+            $table->string('note');
             $table->timestamps();
         });
     }

@@ -15,6 +15,11 @@ class CreatePurcheseItemsTable extends Migration
     {
         Schema::create('purchese_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('purchese_invoice_id');
+            $table->foreignId('product_id');
+            $table->double('quantity');
+            $table->double('price');
+            $table->double('total');
             $table->timestamps();
         });
     }
