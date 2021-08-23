@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserGroupsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Home Route Here.....
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout.main');
 });
+
+//Groups Route Here......
+Route::get('groups',[UserGroupsController::class,'index'])->name('groups');
+
+Route::get('groups/create',[UserGroupsController::class,'create'])->name('groups_create');
+
+Route::post('groups',[UserGroupsController::class,'store'])->name('groups_store');
+
+Route::delete('groups/{id}',[UserGroupsController::class,'delete'])->name('groups_delete');
+
+
+
+Route::get('users',[UserController::class,'index'])->name('users');
+
+
