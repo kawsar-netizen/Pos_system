@@ -15,9 +15,11 @@ class UserGroupsController extends Controller
        return view('groups.groups',$this->data);
 
    }
+
    public function create(){
        return view('groups.create');
    }
+   
    public function store(Request $requst){
 
     $formData = new Group();
