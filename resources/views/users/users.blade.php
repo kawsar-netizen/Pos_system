@@ -37,17 +37,22 @@
                                             <td>{{ $user->phone}}</td>
                                             <td>{{ $user->address}}</td>
                                             <td class="text-right">
-                                                <form action="{{url('users/' . $user->id)}}" method="post">
+
+                                                <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
                                                 @csrf
                                                     @method('DELETE')
-                                                    @method('PUT')
-                                                    <a href="{{url('users/view/{id}',['user'=>$user->id])}}" class="btn btn-primary btn-sm bottom"><i class="fas fa-eye"></i>View</a>
 
-                                                    <a href="{{url('users/edit/{id}',['user'=>$user->id])}}" class="btn btn-info btn-sm bottom"><i class="fas fa-edit"></i>Edit</a>
-
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Delete</button>
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('users.edit', ['user' => $user->id]) }}"> 
+			              	 	                   <i class="fa fa-edit"></i></a>
+                        
+                                                      @method('DELETE')
+                                                    <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> 
+                                                        <i class="fa fa-trash"></i>  
+                                                    </button>
                                                 </form>
+
                                             </td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
