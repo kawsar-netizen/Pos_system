@@ -3,15 +3,15 @@
 
 <div class="row clearfix page_header">
         <div class="col-md-6">
-        <h1> Users List </h1>
+        <h1> Products List </h1>
         </div>
         <div class="col-md-6 text-right">
-        <a href="{{url('users/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> Add User</a>
+        <a href="{{url('Prodcuts/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> Add Product</a>
         </div>
     </div>
     <div class="card shadow mb-4">
 <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">User Table</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Products Table</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -19,33 +19,34 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Group</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Address</th>
+                                            <th>Category</th>
+                                            <th>Title</th>
+                                            <th>Description</th>
+                                            <th>Cost Price</th>
+                                            <th>Price</th>
+                                            <th>Unit</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach( $users as $user)
+                                        @foreach( $Products as $Product)
                                         <tr>
-                                            <td>{{ $user->id}}</td>
-                                            <td>{{ $user->group_id}}</td>
-                                            <td>{{ $user->name}}</td>
-                                            <td>{{ $user->email}}</td>
-                                            <td>{{ $user->phone}}</td>
-                                            <td>{{ $user->address}}</td>
+                                            <td>{{ $Product->id}}</td>
+                                            <td>{{ $Product->category_id}}</td>
+                                            <td>{{ $Product->title}}</td>
+                                            <td>{{ $Product->descrition}}</td>
+                                            <td>{{ $Product->cost_price}}</td>
+                                            <td>{{ $Product->price}}</td>
+                                            <td>{{ $Product->unit}}</td>
                                             <td class="text-right">
 
-                                                <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
+                                                <form action="{{route('Products.destroy',['Product' => $Product->id])}}" method="post">
                                                 @csrf
-                                                    @method('DELETE')
 
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('users.show', ['user' => $user->id]) }}"> 
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('Products.show', ['Product' => $Product->id]) }}"> 
 			              	 	                   <i class="fa fa-eye"></i>
                                                     </a>
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('users.edit', ['user' => $user->id]) }}"> 
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('Products.edit', ['Product' => $Product->id]) }}"> 
 			              	 	                   <i class="fa fa-edit"></i>
                                                     </a>
                         

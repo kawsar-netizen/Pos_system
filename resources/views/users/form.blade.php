@@ -2,7 +2,8 @@
 @section('main_content')
 <div class="row clearfix page_header">
     <div class="col-md-6">
-    <h1> {{$headline}}</h1>
+    <h1>    <a href="{{route('users.index')}}" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Back</a>
+            {{$headline}}</h1>
     </div>
 </div>
     <div class="card shadow mb-4">

@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserGroupsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UserGroupsController;
 
 
 
@@ -23,10 +25,12 @@ Route::delete('groups/{id}',[UserGroupsController::class,'delete'])->name('group
 
 //Users Route Here......
 
+Route::resource('users',UsersController::class);
 
-Route::resource('users',UsersController::class,['except' => ['show']]);
+//Categories Route Here......
 
+Route::resource('categories',CategoriesController::class,['except' => ['show']]);
 
+//Products Route Here......
 
-
-
+Route::resource('Products',ProductsController::class);
