@@ -17,8 +17,8 @@
 <div class="row clearfix mt-5">
             <div class="col-md-2">
                 <div class="nav flex-column nav-pills">
-                <a class="nav-link active" href="">User Info</a>
-                <a class="nav-link"href="{{route('user.sales',$user->id)}}">Sales</a>
+                <a class="nav-link" href="">User Info</a>
+                <a class="nav-link active"href="{{route('user.sales',$user->id)}}">Sales</a>
                 <a class="nav-link"href="">Purchase</a>
                 <a class="nav-link"href="">Payments</a>
                 <a class="nav-link"href="">Receipts</a>

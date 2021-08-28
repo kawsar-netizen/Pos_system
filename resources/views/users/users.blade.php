@@ -28,7 +28,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach( $users as $user)
+                                    @foreach( $users as $user)
                                         <tr>
                                             <td>{{ $user->id}}</td>
                                             <td>{{ $user->group_id}}</td>
@@ -40,7 +40,6 @@
 
                                                 <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
                                                 @csrf
-                                                    @method('DELETE')
 
                                                     <a class="btn btn-primary btn-sm" href="{{ route('users.show', ['user' => $user->id]) }}"> 
 			              	 	                   <i class="fa fa-eye"></i>

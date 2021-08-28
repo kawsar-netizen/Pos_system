@@ -6,7 +6,7 @@
         <h1> Products List </h1>
         </div>
         <div class="col-md-6 text-right">
-        <a href="{{url('Prodcuts/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> Add Product</a>
+        <a href="{{route('Products.create')}}" class="btn btn-info"><i class="fa fa-plus"></i> Add Product</a>
         </div>
     </div>
     <div class="card shadow mb-4">
@@ -32,7 +32,7 @@
                                         @foreach( $Products as $Product)
                                         <tr>
                                             <td>{{ $Product->id}}</td>
-                                            <td>{{ $Product->category_id}}</td>
+                                            <td>{{ $Product->category->title}}</td>
                                             <td>{{ $Product->title}}</td>
                                             <td>{{ $Product->descrition}}</td>
                                             <td>{{ $Product->cost_price}}</td>

@@ -12,6 +12,10 @@ class User extends Model
 
     public function group()
     {
-    	return $this->belongsTo(Group::class,);
+    	return $this->belongsTo(Group::class);
+    }
+
+    Public function sales(){
+        return $this->hasMany(SaleInvioce::class);
     }
 }

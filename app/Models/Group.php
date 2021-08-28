@@ -19,20 +19,13 @@ class Group extends Model
     /**
     * Getting array for select option
     **/
-    public static function arrayForSelect() {
 
-        $arr = [];
-
-    	$groups = Group::all();
-
-    
-        foreach ($groups as $group) {
-
-            $arr[$group->id] = $group->title;
-
-        } 
-
-        return $arr;
-    }
-
+        public static function arrayForSelect(){
+            $arr = [];
+            $groups = Group::all();
+            foreach($groups as $group){
+                $arr[$group->id] = $group->title;
+            }
+            return $arr;
+        }
 }
