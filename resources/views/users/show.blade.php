@@ -1,31 +1,8 @@
-@extends('layout.main')
-@section('main_content')
 
-<div class="row clearfix page_header">
-    <div class="col-md-4">
-    <a href="{{route('users.index')}}" class="btn btn-primary"><i class="fas fa-undo-alt"></i> Back</a>
-    </div>
-        <div class="col-md-8 text-right">
-        <a href="{{url('users/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> New Sale</a>
-        <a href="{{url('users/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> New Purchase</a>
-        <a href="{{url('users/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> New Payment</a>
-        <a href="{{url('users/create')}}" class="btn btn-info"><i class="fa fa-plus"></i> New Receipt</a>
-        </div>
-    </div>
+@extends('users.user_layout')
+@section('user_content')
 
-
-<div class="row clearfix mt-5">
-            <div class="col-md-2">
-                <div class="nav flex-column nav-pills">
-                <a class="nav-link active" href="">User Info</a>
-                <a class="nav-link"href="{{route('user.sales',$user->id)}}">Sales</a>
-                <a class="nav-link"href="">Purchase</a>
-                <a class="nav-link"href="">Payments</a>
-                <a class="nav-link"href="">Receipts</a>
-                </div>
-            </div>
-            <div class="col-md-10">
-                <div class="card shadow mb-4">
+<div class="card shadow mb-4">
                     <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">{{$user->name}}</h6>
                     </div>
@@ -60,6 +37,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
 @stop

@@ -7,6 +7,9 @@ use App\Http\Controllers\UserSalesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserGroupsController;
+use App\Http\Controllers\UserPaymentsController;
+use App\Http\Controllers\UserReceiptsController;
+use App\Http\Controllers\UserPurchasesController;
 
 
 
@@ -44,7 +47,19 @@ Route::delete('groups/{id}',[UserGroupsController::class,'delete'])->name('group
 
 Route::resource('users',UsersController::class);
 
-Route::get('uses/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+Route::get('users/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+
+Route::get('users/{id}/purchase',[UserPurchasesController::class,'index'])->name('user.purchases');
+
+
+Route::get('users/{id}/payment',[UserPaymentsController::class,'index'])->name('user.payments');
+Route::post('users/{id}/payment',[UserPaymentsController::class,'store'])->name('user.payments.store');
+Route::delete('users/{id}/payment/{payment_id}',[UserPaymentsController::class,'destroy'])->name('user.payments.destroy');
+
+
+Route::get('users/{id}/receipt',[UserReceiptsController::class,'index'])->name('user.receipts');
+Route::post('users/{id}/store',[UserReceiptsController::class,'store'])->name('user.receipts.store');
+Route::delete('users/{id}/store/{receipt_id}',[UserReceiptsController::class,'destroy'])->name('user.receipts.destroy');
 
 //Categories Route Here......
 

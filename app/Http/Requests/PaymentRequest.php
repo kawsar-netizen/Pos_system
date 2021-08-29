@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateUserRequest extends FormRequest
+class PaymentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'group_id' => 'requried',
-            //  'name' => 'requried|string',
-            // 'phone' => 'requried|numeric',
-            // 'email' => 'nullable|email',
+            'date' => 'required',
+            'amount' => 'required',
+            'amount' => 'nullable'
         ];
     }
 }

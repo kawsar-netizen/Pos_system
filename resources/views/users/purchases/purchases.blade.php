@@ -3,7 +3,7 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Sales of <strong>{{$user->name}}</strong></h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Purchases of <strong>{{$user->name}}</strong></h6>
                     </div>
                         <div class="card-body">
                         <div class="table-responsive">
@@ -18,12 +18,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach( $user->sales as $sale)
+                                    @foreach( $user->purchases as $purchase)
                                         <tr>
-                                            <td>{{ $sale->challan_no}}</td>
+                                            <td>{{ $purchase->challan_no}}</td>
                                             <td>{{ $user->name}}</td>
-                                            <td>{{ $sale->date}}</td>
-                                            <td>456</td>
+                                            <td>{{ $purchase->date}}</td>
+                                            <td>1234</td>
                                             <td class="text-right">
 
                                                 <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">

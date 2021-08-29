@@ -3,35 +3,40 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Sales of <strong>{{$user->name}}</strong></h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Receipts of <strong>{{$user->name}}</strong></h6>
                     </div>
                         <div class="card-body">
                         <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Challan NO</th>
-                                            <th>Customer</th>
+                                            <th>User</th>
+                                            <th>Collected By</th>
                                             <th>Date</th>
                                             <th>Total</th>
+                                            <th>Note</th>
                                             <th class='text-right'>Action</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                      <tr>
+                                        <th class="text-right" colspan="2">Total :</th>
+                                        <th class="text-left">{{$user->receipts->sum('amount')}}</th>
+                                        <th colspan="3"></th>
+                                      </tr>
+                                    </tfoot>
                                     <tbody>
-                                    @foreach( $user->sales as $sale)
+                                    @foreach( $user->receipts as $receipt)
                                         <tr>
-                                            <td>{{ $sale->challan_no}}</td>
                                             <td>{{ $user->name}}</td>
-                                            <td>{{ $sale->date}}</td>
-                                            <td>456</td>
+                                            <td>{{($receipt->admin_id) ? $receipt->admin->name : ""}}</td>
+                                            <td>{{ $receipt->date}}</td>
+                                            <td>{{ $receipt->amount}}</td>
+                                            <td>{{ $receipt->note}}</td>
                                             <td class="text-right">
 
-                                                <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
+                                                <form action="{{route('user.receipts.destroy',['id' => $user->id,'receipt_id' => $receipt->id])}}" method="post">
                                                 @csrf
-
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('users.show', ['user' => $user->id]) }}"> 
-			              	 	                   <i class="fa fa-eye"></i>
-                                                    </a>
                                                       @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> 
                                                         <i class="fa fa-trash"></i>  
@@ -49,5 +54,6 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                 </div>
 @stop
+
