@@ -32,7 +32,7 @@
                                         @foreach( $Products as $Product)
                                         <tr>
                                             <td>{{ $Product->id}}</td>
-                                            <td>{{ $Product->category->title}}</td>
+                                            <td>{{ optional($Product->category)->title}}</td>
                                             <td>{{ $Product->title}}</td>
                                             <td>{{ $Product->descrition}}</td>
                                             <td>{{ $Product->cost_price}}</td>

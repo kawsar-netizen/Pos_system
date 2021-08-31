@@ -48,6 +48,10 @@ Route::delete('groups/{id}',[UserGroupsController::class,'delete'])->name('group
 Route::resource('users',UsersController::class);
 
 Route::get('users/{id}/sales',[UserSalesController::class,'index'])->name('user.sales');
+Route::post('users/{id}/invoices',[UserSalesController::class,'createInvoice'])->name('user.sales.store');
+Route::get('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'SaleinvoiceDetails'])->name('user.sales.SaleinvoiceDetails');
+Route::post('users/{id}/invoices/{invoice_id}',[UserSalesController::class,'addItem'])->name('user.sales.invoice.addItems');
+
 
 Route::get('users/{id}/purchase',[UserPurchasesController::class,'index'])->name('user.purchases');
 

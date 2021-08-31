@@ -17,4 +17,17 @@ class Product extends Model
 
     }
 
+    public function items(){
+        return $this->hasMany(SaleItem::class);
+    }
+
+    public static function arrayForSelect(){
+        $arr = [];
+        $prodcuts = Product::all();
+        foreach($prodcuts as $prodcut){
+            $arr[$prodcut->id] = $prodcut->title;
+        }
+        return $arr;
+    }
+
 }

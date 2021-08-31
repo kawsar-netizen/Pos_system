@@ -11,9 +11,8 @@
                                     <thead>
                                         <tr>
                                             <th>Challan NO</th>
-                                            <th>Customer</th>
+                                            <th>User</th>
                                             <th>Date</th>
-                                            <th>Total</th>
                                             <th class='text-right'>Action</th>
                                         </tr>
                                     </thead>
@@ -23,13 +22,12 @@
                                             <td>{{ $sale->challan_no}}</td>
                                             <td>{{ $user->name}}</td>
                                             <td>{{ $sale->date}}</td>
-                                            <td>456</td>
                                             <td class="text-right">
 
                                                 <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
                                                 @csrf
 
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('users.show', ['user' => $user->id]) }}"> 
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('user.sales.SaleinvoiceDetails', ['id' => $user->id,'invoice_id'=> $sale->id])}}"> 
 			              	 	                   <i class="fa fa-eye"></i>
                                                     </a>
                                                       @method('DELETE')

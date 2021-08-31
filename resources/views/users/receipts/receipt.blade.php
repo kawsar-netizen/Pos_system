@@ -20,7 +20,7 @@
                                     </thead>
                                     <tfoot>
                                       <tr>
-                                        <th class="text-right" colspan="2">Total :</th>
+                                        <th class="text-right" colspan="3">Total :</th>
                                         <th class="text-left">{{$user->receipts->sum('amount')}}</th>
                                         <th colspan="3"></th>
                                       </tr>

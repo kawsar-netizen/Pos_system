@@ -16,7 +16,7 @@ class CreateSaleItemsTable extends Migration
         Schema::create('sale_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->foreignId('sale_invoice_id');
+            $table->foreignId('sale_invioce_id');
             $table->double('quantity');
             $table->double('price');
             $table->double('total');
