@@ -38,7 +38,7 @@
                                                 <td>{{$item->quantity}}</td>
                                                 <td>{{$item->total}}</td>
                                                 <td class="text-right">
-                                                <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
+                                                <form action="{{route('user.sales.invoice.deleteItem',['id' => $user->id,'invoice_id'=>$invoice->id,'item_id'=>$item->id])}}" method="post">
                                                 @csrf
                                                       @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> 
@@ -56,7 +56,7 @@
                                                         <i class="fa fa-plus"></i> Add Product 
                                                 </button>
                                                 </th>
-                                                <th colspan="2" class="text-right">Total :</th>
+                                                <th colspan="3" class="text-right">Total :</th>
                                                 <th>{{$invoice->items->sum('total')}}</th>
                                                 <th></th>
                                             </tr>
@@ -88,17 +88,17 @@
 				      {{ Form::select('product_id', $products, NULL, [ 'class'=>'form-control', 'id' => 'product', 'placeholder' => 'Select Product', 'required' ]) }}
 				    </div>
 				  </div>
+		    	  <div class="form-group row">
+				    <label for="price" class="col-md-12 col-form-label">Quantity<span class="text-danger">*</span> </label>
+				    <div class="col-sm-9">
+				      {{ Form::text('quantity', NULL, [ 'class'=>'form-control', 'id' => 'quantity', 'placeholder' => 'Quantity', 'required']) }}
+				    </div>
+				  </div>
 
 		    	  <div class="form-group row">
 				    <label for="price" class="col-md-12 col-form-label">Unit Price<span class="text-danger">*</span> </label>
 				    <div class="col-sm-9">
 				      {{ Form::text('price', NULL, [ 'class'=>'form-control', 'id' => 'price', 'placeholder' => 'Price' ,'required']) }}
-				    </div>
-				  </div>
-		    	  <div class="form-group row">
-				    <label for="price" class="col-md-12 col-form-label">Quantity<span class="text-danger">*</span> </label>
-				    <div class="col-sm-9">
-				      {{ Form::text('quantity', NULL, [ 'class'=>'form-control', 'id' => 'quantity', 'placeholder' => 'Quantity', 'required']) }}
 				    </div>
 				  </div>
 		    	  <div class="form-group row">
