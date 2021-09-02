@@ -10,10 +10,14 @@ class Receipt extends Model
     use HasFactory;
 
     protected $fillable = [
-        'date','amount','note','user_id','admin_id'
+        'date','amount','note','user_id','admin_id','sale_invioce_id',
     ];
 
     public function admin(){
         return $this->belongsTo(Admin::class);
+    }
+
+    public function invoice(){
+        return $this->belongsTo(SaleInvoice::class);
     }
 }

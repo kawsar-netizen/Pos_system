@@ -64,7 +64,7 @@ Route::delete('users/{id}/payment/{payment_id}',[UserPaymentsController::class,'
 
 
 Route::get('users/{id}/receipt',[UserReceiptsController::class,'index'])->name('user.receipts');
-Route::post('users/{id}/store',[UserReceiptsController::class,'store'])->name('user.receipts.store');
+Route::post('users/{id}/store/{invoice_id?}',[UserReceiptsController::class,'store'])->name('user.receipts.store');
 Route::delete('users/{id}/store/{receipt_id}',[UserReceiptsController::class,'destroy'])->name('user.receipts.destroy');
 
 //Categories Route Here......

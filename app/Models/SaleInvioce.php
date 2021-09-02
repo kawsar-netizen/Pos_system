@@ -19,4 +19,8 @@ class SaleInvioce extends Model
     public function items(){
         return $this->hasMany(SaleItem::class);
     }
+
+    public function receipts(){
+        return $this->hasMany(Receipt::class);
+    }
 }

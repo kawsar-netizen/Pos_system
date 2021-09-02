@@ -1,5 +1,5 @@
 
-@extends('users.user_layout')
+@extends('users.invoice_layout')
 @section('user_content')
 
 <div class="card shadow mb-4">
@@ -49,21 +49,40 @@
                                             </tr>
                                             @endforeach
                                         </tbody>
-                                        <tfoot>
+                                        
+                                        
                                             <tr>
                                                 <th>
-                                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newProduct">
-                                                        <i class="fa fa-plus"></i> Add Product 
-                                                </button>
+                                                  <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#newProduct">
+                                                          <i class="fa fa-plus"></i> Add Product 
+                                                  </button>
                                                 </th>
                                                 <th colspan="3" class="text-right">Total :</th>
-                                                <th>{{$invoice->items->sum('total')}}</th>
+                                                <th>{{$totalpayable = $invoice->items->sum('total')}}</th>
                                                 <th></th>
                                             </tr>
-                                        </tfoot>
+                                        
+                                        
+                                            <tr>
+                                                <th>
+                                                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newReceiptInvoice">
+                                                          <i class="fa fa-plus"></i> Pay 
+                                                  </button>
+                                                </th>
+                                                <th colspan="3" class="text-right">Paid : </th>
+                                                <th>{{ $totalpaid = $invoice->receipts->sum('amount')}}</th>
+                                                <th></th>
+                                            </tr>
+
+                                            <tr>
+                                            <th colspan="4" class="text-right">Due : </th>
+                                              <th>{{$totalpayable - $totalpaid}}</th>
+                                              <th></th>
+                                            </tr>
+                                        
                                     </table>
                                 </div>
-                                </div>
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -105,6 +124,52 @@
 				    <label for="total" class="col-md-12 col-form-label">Total<span class="text-danger">*</span> </label>
 				    <div class="col-sm-9">
 				      {{ Form::text('total', NULL, [ 'class'=>'form-control', 'id' => 'total', 'placeholder' => 'Total', 'required']) }}
+				    </div>
+				  </div>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Submit</button>	
+	      </div>
+	    </div>
+	    {!! Form::close() !!}
+	  </div>
+	</div>
+
+  <!-- Add a new Receipt Modal -->
+        <!-- modal -->
+        <div class="modal fade" id="newReceiptInvoice" tabindex="-1" role="dialog"aria-labelledby="newReceiptInvoiceModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            {!! Form::open([ 'route' => ['user.receipts.store', $user->id, $invoice->id], 'method' => 'post' ]) !!}
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newReceiptInvoiceModalLabel"> New Receipts For This Invoice </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+	      <div class="modal-body">	
+				  
+				  <div class="form-group row">
+				    <label for="date" class="col-md-12 col-form-label"> Date <span class="text-danger">*</span> </label>
+				    <div class="col-sm-9">
+				      {{ Form::date('date', NULL, [ 'class'=>'form-control', 'id' => 'date', 'placeholder' => 'Date', 'required' ]) }}
+				    </div>
+				  </div>
+
+				  <div class="form-group row">
+				    <label for="amount" class="col-md-12 col-form-label">Amount <span class="text-danger">*</span>  </label>
+				    <div class="col-sm-9">
+				      {{ Form::text('amount', NULL, [ 'class'=>'form-control', 'id' => 'amount', 'placeholder' => 'Amount', 'required' ]) }}
+				    </div>
+				  </div>
+
+				  <div class="form-group row">
+				    <label for="note" class="col-md-12 col-form-label">Note </label>
+				    <div class="col-sm-9">
+				      {{ Form::textarea('note', NULL, [ 'class'=>'form-control', 'id' => 'note', 'rows' => '3', 'placeholder' => 'Note' ]) }}
 				    </div>
 				  </div>
 

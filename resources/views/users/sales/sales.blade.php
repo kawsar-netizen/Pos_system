@@ -67,7 +67,8 @@
                                         @endforeach
                                     </tbody>
                                     <tfoot>
-                                        <th class="text-right" colspan="4">{{$totalItem }}</th>
+                                        <th class="text-right" colspan='3'>Total :</th>
+                                        <th>{{$totalItem }}</th>
                                         <th colspan="1">{{$grandtotal}}</th>
                                         <th></th>
                                     </tfoot>

@@ -20,7 +20,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Title</th>
-                                            <th>Action</th>
+                                            <th class="text-right">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

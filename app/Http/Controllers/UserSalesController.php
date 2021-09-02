@@ -50,36 +50,50 @@ class UserSalesController extends Controller
     }
 
     public function addItem(InvoiceProductRequest $request, $user_id,$invoice_id){
+
         $formData = $request->all();
+
         $formData['sale_invioce_id'] = $invoice_id;
+
         $formData['user_id'] = $user_id;
+
         $formData = SaleItem::create($formData);
+
         if($formData){
             Session::flash('message','Item Added Successfull!');
         }else{
             Session::flash('message','Not Found');
         }
+        
         return redirect()->route('user.sales.SaleinvoiceDetails', ['id' => $user_id,'invoice_id'=> $invoice_id]);
     }
 
     public function destroy($user_id,$invoice_id,$item_id){
+
         $formData = SaleItem::findOrFail($item_id);
         $formData->delete();
+
         if($formData){
             Session::flash('message','Item Deleted Successfull!');
         }else{
             Session::flash('message','Not Found');
         }
+
         return redirect()->route('user.sales.SaleinvoiceDetails', ['id' => $user_id,'invoice_id'=> $invoice_id]);
     }
+
     public function sales_destroy($user_id,$invoice_id){
+
         $formData = SaleInvioce::findOrFail($invoice_id);
+
         $formData->delete();
+
         if($formData){
             Session::flash('message','Invoice Deleted Successfull!');
         }else{
             Session::flash('message','Not Found');
         }
+
         return redirect()->route('user.sales', ['id' => $user_id]);
 
     }
