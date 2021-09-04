@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Purchese_invoice;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\InvoiceRequest;
+use Illuminate\Support\Facades\Session;
 
 class UserPurchasesController extends Controller
 {

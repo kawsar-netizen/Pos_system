@@ -25,6 +25,8 @@ class InvoiceRequest extends FormRequest
     {
         return [
             'date' => 'required',
+            'challan_no' => 'nullable',
+            'note' => 'nullable',
         ];
     }
 }
