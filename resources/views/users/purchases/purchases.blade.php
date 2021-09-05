@@ -13,29 +13,52 @@
                                             <th>Challan NO</th>
                                             <th>Customer</th>
                                             <th>Date</th>
+                                            <th>Items</th>
                                             <th>Total</th>
                                             <th class='text-right'>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                            $totalItem = 0;
+                                            $grandtotal = 0;
+
+                                        ?>
                                     @foreach( $user->purchases as $purchase)
                                         <tr>
                                             <td>{{ $purchase->challan_no}}</td>
                                             <td>{{ $user->name}}</td>
                                             <td>{{ $purchase->date}}</td>
-                                            <td>1234</td>
+                                            <td>
+                                                <?php
+                                                    $ItemQyt = $purchase->items->sum('quantity');
+                                                    $totalItem += $ItemQyt;
+                                                    echo $totalItem;
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                    $total = $purchase->items->sum('total');
+                                                    $grandtotal += $total;
+                                                    echo $grandtotal;
+                                                ?>
+                                                
+                                            </td>
                                             <td class="text-right">
 
-                                                <form action="{{route('users.destroy',['user' => $user->id])}}" method="post">
-                                                @csrf
-
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('users.show', ['user' => $user->id]) }}"> 
+                                                <form action="{{route('user.purchases.destroy',['id' => $user->id,'invoice_id'=>$purchase->id])}}" method="post">
+                                                
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('user.purchases.PurchaseinvoiceDetails', ['id' => $user->id,'invoice_id' => $purchase->id]) }}"> 
 			              	 	                   <i class="fa fa-eye"></i>
                                                     </a>
-                                                      @method('DELETE')
+                                                    
+                                                @if($ItemQyt == 0)
+                                                    @csrf
+                                                    @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> 
                                                         <i class="fa fa-trash"></i>  
                                                     </button>
+                                                @endif
                                                 </form>
 
                                             </td>
@@ -43,6 +66,12 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <th class="text-right" colspan='3'>Total :</th>
+                                        <th>{{$totalItem }}</th>
+                                        <th colspan="1">{{$grandtotal}}</th>
+                                        <th></th>
+                                    </tfoot>
                                 </table>
                                  </div>
                                 </div>
