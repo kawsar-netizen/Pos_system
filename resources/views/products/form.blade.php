@@ -36,7 +36,7 @@
                 
                 <div class="form-group">
                 <label for="description">Description</span></label>
-                {{Form::text('descrition',Null,['class'=>'form-control','id'=>'descrition','placeholder'=>'Description'])}}
+                {{Form::textarea('descrition',Null,['class'=>'form-control','id'=>'descrition','placeholder'=>'Description'])}}
                     <!-- <input type="phone" class="form-control" name='phone' placeholder="Enter user email"> -->
                 </div>
                

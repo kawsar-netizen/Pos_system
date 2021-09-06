@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\SaleItem;
+use App\Models\Purchese_item;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -18,6 +20,13 @@ class Product extends Model
     }
 
     public function items(){
+        return $this->hasMany(SaleItem::class);
+    }
+
+    public function purchaseItems(){
+        return $this->hasMany(Purchese_item::class);
+    }
+    public function saleItems(){
         return $this->hasMany(SaleItem::class);
     }
 

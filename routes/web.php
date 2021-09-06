@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserGroupsController;
 use App\Http\Controllers\UserPaymentsController;
 use App\Http\Controllers\UserReceiptsController;
+use App\Http\Controllers\ProductsStockController;
 use App\Http\Controllers\UserPurchasesController;
 
 
@@ -79,6 +80,8 @@ Route::resource('categories',CategoriesController::class,['except' => ['show']])
 //Products Route Here......
 
 Route::resource('Products',ProductsController::class);
+
+Route::get('products/stock',[ProductsStockController::class,'index'])->name('stocks.index');
 
 
 });
