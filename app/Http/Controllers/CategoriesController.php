@@ -10,6 +10,12 @@ use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoriesController extends Controller
 {
+
+    public function __construct(){
+        parent::__construct();
+        $this->data['main_menu'] = 'Products';
+        $this->data['sub_menu'] = 'Categories';
+    }
     /**
      * Display a listing of the resource.
      *

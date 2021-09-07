@@ -21,15 +21,23 @@
                                     <tbody>
                                         <?php
                                             $totalItem = 0;
-                                            $grandtotal = 0;
+                                            $grandTotal = 0;
 
                                         ?>
                                     @foreach( $user->purchases as $purchase)
+
+                                     
+                                        <?php
+                                            $totalItem  +=  $purchase->quantity;
+                                            $grandTotal +=  $purchase->total;
+                                        ?>
+
                                         <tr>
                                             <td>{{ $purchase->challan_no}}</td>
                                             <td>{{ $user->name}}</td>
                                             <td>{{ $purchase->date}}</td>
                                             <td>
+                                                <!-- {{$purchase->quantity}} -->
                                                 <?php
                                                     $ItemQyt = $purchase->items->sum('quantity');
                                                     $totalItem += $ItemQyt;
@@ -39,9 +47,10 @@
                                             <td>
                                                 <?php
                                                     $total = $purchase->items->sum('total');
-                                                    $grandtotal += $total;
-                                                    echo $grandtotal;
+                                                    $grandTotal += $total;
+                                                    echo $grandTotal;
                                                 ?>
+                                                <!-- {{$purchase->total}} -->
                                                 
                                             </td>
                                             <td class="text-right">
@@ -69,7 +78,7 @@
                                     <tfoot>
                                         <th class="text-right" colspan='3'>Total :</th>
                                         <th>{{$totalItem }}</th>
-                                        <th colspan="1">{{$grandtotal}}</th>
+                                        <th colspan="1">{{$grandTotal}}</th>
                                         <th></th>
                                     </tfoot>
                                 </table>

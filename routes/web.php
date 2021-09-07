@@ -9,8 +9,13 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserGroupsController;
 use App\Http\Controllers\UserPaymentsController;
 use App\Http\Controllers\UserReceiptsController;
+use App\Http\Controllers\HomeDashboardController;
 use App\Http\Controllers\ProductsStockController;
 use App\Http\Controllers\UserPurchasesController;
+use App\Http\Controllers\Reports\ReportSalesController;
+use App\Http\Controllers\Reports\ReportPaymentsController;
+use App\Http\Controllers\Reports\ReportReceiptsController;
+use App\Http\Controllers\Reports\ReportPurchasesController;
 
 
 
@@ -26,10 +31,9 @@ Route::post('login',[LoginController::class,'authenticate'])->name('confirm.logi
 
 Route::group(['middleware'=> 'auth'],function(){
 
+
 //Home Route Here.....
-Route::get('/', function () {
-    return view('layout.main');
-});   
+Route::get('/',[HomeDashboardController::class,'index'])->name('home.dashboard');
 
 
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
@@ -83,6 +87,10 @@ Route::resource('Products',ProductsController::class);
 
 Route::get('products/stock',[ProductsStockController::class,'index'])->name('stocks.index');
 
+Route::get('report/sales',[ReportSalesController::class,'index'])->name('reports.sales');
+Route::get('report/purchases',[ReportPurchasesController::class,'index'])->name('reports.purchases');
+Route::get('report/payments',[ReportPaymentsController::class,'index'])->name('reports.payments');
+Route::get('report/receipts',[ReportReceiptsController::class,'index'])->name('reports.receipts');
 
 });
 

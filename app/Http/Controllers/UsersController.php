@@ -16,6 +16,13 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        parent::__construct();
+        $this->data['main_menu'] = 'Users';
+        $this->data['sub_menu'] = 'Users';
+    }
+
     public function index()
     {
         $this->data['users']        = User::all();

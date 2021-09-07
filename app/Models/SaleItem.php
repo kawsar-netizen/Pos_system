@@ -13,7 +13,7 @@ class SaleItem extends Model
     ];
     public function invoice(){
         
-        return $this->belongsTo(SaleInvioce::class);
+        return $this->belongsTo(SaleInvioce::class,'sale_invioce_id','id');
     }
     public function product(){
 
