@@ -26,7 +26,7 @@ class CreateUserRequest extends FormRequest
         return [
             'group_id' => 'required',
             'name' => 'required|string',
-            'phone' => 'required|numeric|unique:users',
+            'phone' => 'nullable|numeric|unique:users',
             'email' => 'nullable|email|unique:users'
         ];
     }

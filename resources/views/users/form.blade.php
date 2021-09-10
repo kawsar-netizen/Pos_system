@@ -35,7 +35,7 @@
                 </div>
                 
                 <div class="form-group">
-                <label for="phone">Phone<span class='text-danger'>*</span></label>
+                <label for="phone">Phone</label>
                 {{Form::text('phone',Null,['class'=>'form-control','id'=>'phone','placeholder'=>'Enter Your phone number'])}}
                     <!-- <input type="phone" class="form-control" name='phone' placeholder="Enter user email"> -->
                 </div>

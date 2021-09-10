@@ -21,12 +21,6 @@
                 @else
                 {!! Form::open(['route' => ['Products.store'],'method' => 'post']) !!}
                 @endif
-
-                <div class="form-group">
-                <label for="group">Category<span class='text-danger'>*</span></label>
-                {{Form::select('category_id',$categories,Null,['class'=>'form-control','id'=>'category','placeholder'=>'Category'])}}                   
-                 <!-- <input type="group" class="form-control" name='group' placeholder="User group"> -->
-                </div>
                 
                 <div class="form-group">
                 <label for="title">Title<span class='text-danger'>*</span></label>
@@ -39,15 +33,21 @@
                 {{Form::textarea('descrition',Null,['class'=>'form-control','id'=>'descrition','placeholder'=>'Description'])}}
                     <!-- <input type="phone" class="form-control" name='phone' placeholder="Enter user email"> -->
                 </div>
+
+                <div class="form-group">
+                <label for="group">Category<span class='text-danger'>*</span></label>
+                {{Form::select('category_id',$categories,Null,['class'=>'form-control','id'=>'category','placeholder'=>'Category'])}}                   
+                 <!-- <input type="group" class="form-control" name='group' placeholder="User group"> -->
+                </div>
                
                 <div class="form-group">
-                <label for="cost_price">Cost Price<span class='text-danger'>*</label>
+                <label for="cost_price">Cost Price
                 {{Form::text('cost_price',Null,['class'=>'form-control','id'=>'cost_price','placeholder'=>'Cost Price'])}}
                     <!-- <input type="email" class="form-control" name='email' placeholder="Enter user phone"> -->
                 </div>
                 
                 <div class="form-group">
-                <label for="price">Price<span class='text-danger'>*</label>
+                <label for="price"> Sale Price
                 {{Form::text('price',Null,['class'=>'form-control','id'=>'price','placeholder'=>'Price'])}}
                     <!-- <input type="address" class="form-control" name='address' placeholder="Enter user address"> -->
                 </div>
@@ -55,6 +55,12 @@
                 <label for="unit">Unit</label>
                 {{Form::text('unit',Null,['class'=>'form-control','id'=>'unit','placeholder'=>'Unit'])}}
                     <!-- <input type="address" class="form-control" name='address' placeholder="Enter user address"> -->
+                </div>
+
+                <div class="form-group">
+                <label for="stock">Has Stock</label>
+                {{Form::select('has_stock',['1'=>'Yes','0'=>'No'],Null,['class'=>'form-control','id'=>'stock'])}}                   
+                 <!-- <input type="group" class="form-control" name='group' placeholder="User group"> -->
                 </div>
 
             <button type="submit" class="btn btn-primary">{{$botton}}</button>

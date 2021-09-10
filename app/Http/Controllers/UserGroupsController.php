@@ -23,7 +23,9 @@ class UserGroupsController extends Controller
    }
 
    public function create(){
-       return view('groups.create');
+
+       $this->data['main_menu'] = '';
+       return view('groups.create',$this->data);
    }
    
    public function store(Request $requst){

@@ -24,6 +24,7 @@
                                             <th>Description</th>
                                             <th>Cost Price</th>
                                             <th>Price</th>
+                                            <th>Has Stock</th>
                                             <th>Unit</th>
                                             <th>Action</th>
                                         </tr>
@@ -37,6 +38,7 @@
                                             <td>{{ $Product->descrition}}</td>
                                             <td>{{ $Product->cost_price}}</td>
                                             <td>{{ $Product->price}}</td>
+                                            <td>{{ ($Product->has_stock == 1)? 'Yes' : 'No'}}</td>
                                             <td>{{ $Product->unit}}</td>
                                             <td class="text-right">
 

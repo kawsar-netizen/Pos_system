@@ -107,21 +107,23 @@
 				      {{ Form::select('product_id', $products, NULL, [ 'class'=>'form-control', 'id' => 'product', 'placeholder' => 'Select Product', 'required' ]) }}
 				    </div>
 				  </div>
-		    	  <div class="form-group row">
-				    <label for="price" class="col-md-12 col-form-label">Quantity<span class="text-danger">*</span> </label>
-				    <div class="col-sm-9">
-				      {{ Form::text('quantity', NULL, [ 'class'=>'form-control', 'id' => 'quantity', 'placeholder' => 'Quantity', 'required']) }}
-				    </div>
-				  </div>
 
 		    	  <div class="form-group row">
 				    <label for="price" class="col-md-12 col-form-label">Unit Price<span class="text-danger">*</span> </label>
 				    <div class="col-sm-9">
-				      {{ Form::text('price', NULL, [ 'class'=>'form-control', 'id' => 'price', 'placeholder' => 'Price' ,'required']) }}
+				      {{ Form::text('price', Null, [ 'class'=>'form-control', 'id' => 'price','onkeyup' => 'getTotal()', 'placeholder' => 'Price' ,'required']) }}
 				    </div>
 				  </div>
+
+          <div class="form-group row">
+				    <label for="price" class="col-md-12 col-form-label">Quantity<span class="text-danger">*</span> </label>
+				    <div class="col-sm-9">
+				      {{ Form::text('quantity', Null, [ 'class'=>'form-control', 'id' => 'quantity','onkeyup' => 'getTotal()', 'placeholder' => 'Quantity', 'required']) }}
+				    </div>
+				  </div>
+
 		    	  <div class="form-group row">
-				    <label for="total" class="col-md-12 col-form-label">Total<span class="text-danger">*</span> </label>
+				    <label for="total" class="col-md-12 col-form-label">Total</label>
 				    <div class="col-sm-9">
 				      {{ Form::text('total', NULL, [ 'class'=>'form-control', 'id' => 'total', 'placeholder' => 'Total', 'required']) }}
 				    </div>
@@ -182,4 +184,19 @@
 	    {!! Form::close() !!}
 	  </div>
 	</div>
+
+  <script type='text/javascript'>
+    
+    function getTotal(){
+      var price = document.getElementById("price").value;
+      var quantity = document.getElementById("quantity").value;
+      if(price && quantity){
+        var total = price * quantity;
+        document.getElementById("total").value = total;
+
+   }
+   
+}
+
+</script>
 @stop

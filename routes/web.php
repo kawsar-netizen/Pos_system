@@ -33,7 +33,7 @@ Route::group(['middleware'=> 'auth'],function(){
 
 
 //Home Route Here.....
-Route::get('/',[HomeDashboardController::class,'index'])->name('home.dashboard');
+Route::get('dashboard',[HomeDashboardController::class,'index'])->name('home.dashboard');
 
 
 Route::get('logout',[LoginController::class,'logout'])->name('logout');

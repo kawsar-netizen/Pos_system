@@ -119,6 +119,7 @@ class ProductsController extends Controller
         $product->descrition = $data['descrition'];
         $product->cost_price = $data['cost_price'];
         $product->price = $data['price'];
+        $product->has_stock = $data['has_stock'];
         $product->unit = $data['unit'];
         $product->save();
         if($product){
