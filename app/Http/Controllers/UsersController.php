@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Group;
+use App\Models\SaleItem;
 use Illuminate\Http\Request;
+use App\Models\Purchese_item;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
@@ -21,6 +24,7 @@ class UsersController extends Controller
         parent::__construct();
         $this->data['main_menu'] = 'Users';
         $this->data['sub_menu'] = 'Users';
+        $this->data['tab_menu'] = 'reports';
     }
 
     public function index()

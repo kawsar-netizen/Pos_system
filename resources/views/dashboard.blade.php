@@ -1,6 +1,7 @@
 @extends('layout.main')
 @section('main_content')
 
+
 <div class="row">
 
 <!-- Total Stocks Card Example -->
@@ -155,6 +156,7 @@
             </div>
         </div>
     </div>
+  </div>
 </div>
-</div>
+
 @stop

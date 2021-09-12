@@ -183,4 +183,19 @@
 	    {!! Form::close() !!}
 	  </div>
 	</div>
+  
+  <script type='text/javascript'>
+    
+    function getTotal(){
+      var price = document.getElementById("price").value;
+      var quantity = document.getElementById("quantity").value;
+      if(price && quantity){
+        var total = price * quantity;
+        document.getElementById("total").value = total;
+
+   }
+   
+}
+
+</script>
 @stop

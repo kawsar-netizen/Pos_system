@@ -7,11 +7,13 @@ use App\Http\Controllers\UserSalesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserGroupsController;
+use App\Http\Controllers\UserReportsController;
 use App\Http\Controllers\UserPaymentsController;
 use App\Http\Controllers\UserReceiptsController;
 use App\Http\Controllers\HomeDashboardController;
 use App\Http\Controllers\ProductsStockController;
 use App\Http\Controllers\UserPurchasesController;
+use App\Http\Controllers\Reports\DayReportsController;
 use App\Http\Controllers\Reports\ReportSalesController;
 use App\Http\Controllers\Reports\ReportPaymentsController;
 use App\Http\Controllers\Reports\ReportReceiptsController;
@@ -33,7 +35,7 @@ Route::group(['middleware'=> 'auth'],function(){
 
 
 //Home Route Here.....
-Route::get('dashboard',[HomeDashboardController::class,'index'])->name('home.dashboard');
+Route::get('/',[HomeDashboardController::class,'index'])->name('home.dashboard');
 
 
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
@@ -91,6 +93,9 @@ Route::get('report/sales',[ReportSalesController::class,'index'])->name('reports
 Route::get('report/purchases',[ReportPurchasesController::class,'index'])->name('reports.purchases');
 Route::get('report/payments',[ReportPaymentsController::class,'index'])->name('reports.payments');
 Route::get('report/receipts',[ReportReceiptsController::class,'index'])->name('reports.receipts');
+
+Route::get('report/days',[DayReportsController::class,'index'])->name('reports.days');
+Route::get('users/{id}/reports)',[UserReportsController::class,'reports'])->name('user.reports');
 
 });
 

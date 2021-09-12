@@ -68,6 +68,7 @@
                 </a>
                 <div id="reports" class="collapse @if($main_menu == 'Reports') show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if($sub_menu == 'Days') active @endif" href="{{route('reports.days')}}">Day Reports</a>
                         <a class="collapse-item @if($sub_menu == 'Sales') active @endif" href="{{route('reports.sales')}}">Sales</a>
                         <a class="collapse-item @if($sub_menu == 'Purchases') active @endif" href="{{route('reports.purchases')}}">Purchases</a>
                         <a class="collapse-item @if($sub_menu == 'Payments') active @endif" href="{{route('reports.payments')}}">Payments</a>

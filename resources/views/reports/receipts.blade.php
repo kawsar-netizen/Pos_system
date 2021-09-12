@@ -27,13 +27,14 @@
          {!! Form::close() !!}
         </div>
     </div>
-    <div class="card shadow mb-4">
-<div class="card-header py-3">
+    
+<div class="card shadow mb-4">
+        <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"> <strong> Receipts Report From {{$start_date}} to {{$end_date}} </strong></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-borderless table-striped" cellspacing="0">
+                                <table class="table table-borderless table-sm table-striped" cellspacing="0">
                                     <thead>
                                         <tr>
                                            <th>Date</th>
