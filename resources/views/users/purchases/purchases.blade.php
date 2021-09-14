@@ -19,18 +19,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
+                                        <?php 
                                             $totalItem = 0;
                                             $grandTotal = 0;
-
-                                        ?>
+		          	                    ?>
                                     @foreach( $user->purchases as $purchase)
-
-                                     
-                                        <?php
-                                            $totalItem  +=  $purchase->quantity;
-                                            $grandTotal +=  $purchase->total;
-                                        ?>
 
                                         <tr>
                                             <td>{{ $purchase->challan_no}}</td>
@@ -38,18 +31,18 @@
                                             <td>{{ $purchase->date}}</td>
                                             <td>
                                                 <!-- {{$purchase->quantity}} -->
-                                                <?php
-                                                    $ItemQyt = $purchase->items->sum('quantity');
-                                                    $totalItem += $ItemQyt;
-                                                    echo $totalItem;
-                                                ?>
+                                                <?php 
+                                                    $itemQty = $purchase->items()->sum('quantity');
+                                                    $totalItem += $itemQty;
+                                                    echo $itemQty;
+			              	                    ?>
                                             </td>
                                             <td>
-                                                <?php
-                                                    $total = $purchase->items->sum('total');
+                                                <?php 
+                                                    $total = $purchase->items()->sum('total');
                                                     $grandTotal += $total;
-                                                    echo $grandTotal;
-                                                ?>
+                                                    echo $total;
+			              	                    ?>
                                                 <!-- {{$purchase->total}} -->
                                                 
                                             </td>
@@ -61,7 +54,7 @@
 			              	 	                   <i class="fa fa-eye"></i>
                                                     </a>
                                                     
-                                                @if($ItemQyt == 0)
+                                                @if($itemQty == 0)
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> 
@@ -77,8 +70,8 @@
                                     </tbody>
                                     <tfoot>
                                         <th class="text-right" colspan='3'>Total :</th>
-                                        <th>{{$totalItem }}</th>
-                                        <th colspan="1">{{$grandTotal}}</th>
+                                        <th>{{ $totalItem }}</th>
+                                        <th colspan="1">{{ $grandTotal }}</th>
                                         <th></th>
                                     </tfoot>
                                 </table>

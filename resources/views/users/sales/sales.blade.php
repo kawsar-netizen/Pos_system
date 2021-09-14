@@ -19,29 +19,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
+                                        <?php 
                                             $totalItem = 0;
-                                            $grandtotal = 0;
-
-                                        ?>
+                                            $grandTotal = 0;
+		          	                    ?>
                                     @foreach( $user->sales as $sale)
                                         <tr>
                                             <td>{{ $sale->challan_no}}</td>
                                             <td>{{ $user->name}}</td>
                                             <td>{{ $sale->date}}</td>
                                             <td>
-                                                <?php
-                                                    $ItemQyt = $sale->items->sum('quantity');
-                                                    $totalItem += $ItemQyt;
-                                                    echo $totalItem;
-                                                ?>
+                                                <?php 
+                                                    $itemQty = $sale->items()->sum('quantity');
+                                                    $totalItem += $itemQty;
+                                                    echo $itemQty;
+			              	                    ?>
                                             </td>
                                             <td>
-                                            <?php
-                                                    $total = $sale->items->sum('total');
-                                                    $grandtotal += $total;
-                                                    echo $grandtotal;
-                                                ?>
+                                                <?php 
+                                                    $total = $sale->items()->sum('total');
+                                                    $grandTotal += $total;
+                                                    echo $total;
+			              	                    ?>
                                                 
                                             </td>
                                             <td class="text-right">
@@ -52,7 +51,7 @@
                                                     <a class="btn btn-primary btn-sm" href="{{ route('user.sales.SaleinvoiceDetails', ['id' => $user->id,'invoice_id'=> $sale->id])}}"> 
 			              	 	                   <i class="fa fa-eye"></i>
                                                     </a>
-                                                    @if($ItemQyt == 0)
+                                                    @if($itemQty == 0)
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="return confirm('Are you sure?')" type="submit" class="btn btn-danger btn-sm"> 
@@ -68,8 +67,8 @@
                                     </tbody>
                                     <tfoot>
                                         <th class="text-right" colspan='3'>Total :</th>
-                                        <th>{{$totalItem }}</th>
-                                        <th colspan="1">{{$grandtotal}}</th>
+                                        <th>{{ $totalItem }}</th>
+                                        <th colspan="1">{{ $grandTotal }}</th>
                                         <th></th>
                                     </tfoot>
                                 </table>

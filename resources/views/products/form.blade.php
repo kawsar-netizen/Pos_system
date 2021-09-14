@@ -41,13 +41,13 @@
                 </div>
                
                 <div class="form-group">
-                <label for="cost_price">Cost Price
+                <label for="cost_price">Cost Price</label>
                 {{Form::text('cost_price',Null,['class'=>'form-control','id'=>'cost_price','placeholder'=>'Cost Price'])}}
                     <!-- <input type="email" class="form-control" name='email' placeholder="Enter user phone"> -->
                 </div>
                 
                 <div class="form-group">
-                <label for="price"> Sale Price
+                <label for="price"> Sale Price</label>
                 {{Form::text('price',Null,['class'=>'form-control','id'=>'price','placeholder'=>'Price'])}}
                     <!-- <input type="address" class="form-control" name='address' placeholder="Enter user address"> -->
                 </div>
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="form-group">
-                <label for="stock">Has Stock</label>
+                <label for="stock"> Has Stock </label>
                 {{Form::select('has_stock',['1'=>'Yes','0'=>'No'],Null,['class'=>'form-control','id'=>'stock'])}}                   
                  <!-- <input type="group" class="form-control" name='group' placeholder="User group"> -->
                 </div>
